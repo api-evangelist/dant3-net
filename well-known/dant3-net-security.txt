@@ -1,0 +1,5 @@
+Contact: mailto:info@dant3.net
+Expires: 2027-07-13T17:00:00.000Z
+Preferred-Languages: en
+Canonical: https://dant3.net/.well-known/security.txt
+Policy: https://dant3.net/legal#moderation

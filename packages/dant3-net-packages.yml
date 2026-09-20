@@ -1,0 +1,40 @@
+generated: '2026-09-19'
+method: searched
+source: 'https://github.com/snooptsz/dant3-mcp (sdk/python/pyproject.toml, PYPI-RELEASE.md, README.md); registries
+  probed 2026-09-19: pypi.org/pypi/dant3-robot/json 404, pypi.org/pypi/dant3/json 404, registry.npmjs.org search
+  "dant3" empty, registry.modelcontextprotocol.io lists only a remote (no package).'
+description: 'One first-party client library: a dependency-free Python Robot SDK + CLI (dant3-robot) distributed
+  from the GitHub repository, not yet on PyPI. The provider documents a PyPI Trusted-Publishing release workflow
+  and explicitly says "Do not advertise the PyPI install path until a real release exists". The MCP server is remote-only
+  (no npm/PyPI package). The repo also carries Node helper scripts (machine-registration-preflight.mjs, machine-registration-client.mjs,
+  live-mcp-smoke.mjs) that are run from a checkout rather than installed.'
+packages:
+- language: python
+  registry: github
+  name: dant3-robot
+  url: https://github.com/snooptsz/dant3-mcp/tree/main/sdk/python
+  source: https://github.com/snooptsz/dant3-mcp
+  install: python -m pip install "git+https://github.com/snooptsz/dant3-mcp.git#subdirectory=sdk/python"
+  official: true
+  version: 0.1.0
+  published: null
+  license: MIT
+  requires_python: '>=3.9'
+  entry_point: dant3-robot (dant3_robot.cli:main)
+  python_api: from dant3_robot import Dant3RobotClient
+  version_source: sdk/python/pyproject.toml on main (repo last pushed 2026-09-08)
+  pypi_status: 404
+  note: Not on PyPI as of 2026-09-19 (pypi.org/pypi/dant3-robot/json -> 404); version read from pyproject.toml,
+    so no registry publish date exists. The SDK deliberately exposes no actuator/navigation interface.
+- language: javascript
+  registry: none
+  name: dant3 machine registration scripts
+  url: https://github.com/snooptsz/dant3-mcp/tree/main/scripts
+  source: https://github.com/snooptsz/dant3-mcp
+  install: git clone https://github.com/snooptsz/dant3-mcp && node scripts/machine-registration-preflight.mjs
+  official: true
+  version: null
+  published: null
+  note: Unpackaged Node scripts (preflight, registration client with a local write-safety latch, MCP/web smoke tests).
+    No package.json at repo root; recorded as tooling, not an SDK. version null because nothing is published to
+    a registry.

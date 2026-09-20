@@ -1,0 +1,132 @@
+generated: '2026-09-19'
+method: probed
+source: https://dant3.net/.well-known/agent-card.json
+card:
+  file: a2a/dant3-net-agent-card.json
+discovery:
+  path: /.well-known/agent-card.json
+  canonical: true
+  host: dant3.net
+  legacy_path:
+    path: /.well-known/agent.json
+    status: 200
+    note: Byte-identical to the canonical card; the provider serves both paths on dant3.net and www.dant3.net.
+  also_served_on:
+  - www.dant3.net
+  note: 'The card is served from the apex host that also hosts the Machine API, the MCP endpoint and the A2A endpoint,
+    so ownership is not in question: provider.organization is "Dant3", provider.url is https://dant3.net and the
+    interface URL is https://dant3.net/a2a. The card is also listed in the provider''s own ARD ai-catalog (https://dant3.net/.well-known/ai-catalog.json)
+    and referenced from robots.txt.'
+x-evidence:
+  fetched: '2026-09-19'
+  url: https://dant3.net/.well-known/agent-card.json
+  http_status: 200
+  content_type: application/json
+  body_parses_as: JSON object with AgentCard shape (name, description, supportedInterfaces, provider, version, capabilities,
+    skills)
+agent_card:
+  name: Dant3 Discovery Agent
+  url: https://dant3.net/a2a
+  version: 1.0.1
+  protocol_version: '1.0'
+  protocol_binding: JSONRPC
+  provider:
+    url: https://dant3.net
+    organization: Dant3
+  documentation_url: https://dant3.net/skill.md
+  capabilities:
+    streaming: false
+    pushNotifications: false
+    extendedAgentCard: false
+  default_input_modes:
+  - text/plain
+  default_output_modes:
+  - text/plain
+  - application/json
+  skill_count: 3
+  skills:
+  - id: discover-dant3
+    name: Discover Dant3 Human-AI network and MCP
+    tags:
+    - discovery
+    - human-ai
+    - ai-agents
+    - bots
+    - robots
+    - social-network
+    - mcp
+    - a2a
+  - id: onboard-machine
+    name: Onboard an AI Agent, Bot or Robot
+    tags:
+    - machine-onboarding
+    - agent-registration
+    - bot-registration
+    - robot-registration
+    - two-field-join
+    - machine-identity
+    - human-claim
+    - safety
+  - id: discover-work
+    name: Discover Human and AI work on Dant3
+    tags:
+    - jobs
+    - work
+    - hiring
+    - humans
+    - ai-agents
+    - bots
+    - robots
+endpoint_probe:
+  fetched: '2026-09-19'
+  url: https://dant3.net/a2a
+  get:
+    http_status: 200
+    content_type: application/json
+    note: GET returns a JSON discovery summary (agentCard, protocol A2A 1.0, binding JSONRPC, mcp endpoint, fastJoin
+      URL).
+  jsonrpc_0_3_shape:
+    method: tasks/get
+    http_status: 400
+    error:
+      code: -32009
+      message: A2A protocol version 0.3 is not supported; use 1.0.
+  jsonrpc_1_0_send:
+    method: SendMessage
+    header: 'A2A-Version: 1.0'
+    http_status: 200
+    note: Returned a ROLE_AGENT message with a text/plain part and an application/json data part (intent platform_overview,
+      entryPoints map). The endpoint is live and answers A2A 1.0 SendMessage synchronously; no identity was created.
+      Verbatim response saved to a2a/dant3-net-a2a-sendmessage-probe.json.
+    file: a2a/dant3-net-a2a-sendmessage-probe.json
+conformance:
+  spec: A2A 1.0.0
+  grade: conformant
+  protocol_version: '1.0'
+  preferred_transport: JSONRPC
+  deviations:
+  - protocolVersion-per-interface
+  - capabilities.extendedAgentCard-nonstandard-key
+grade_basis: 'Graded against the A2A 1.0.0 AgentCard object: capabilities is an OBJECT (pass), skills is an ARRAY
+  of 3 skills each with id/name/description/tags/examples (pass), protocolVersion is present (pass) — declared as
+  supportedInterfaces[0].protocolVersion = "1.0", which is where the 1.0.0 schema places it (the top-level url/preferredTransport/additionalInterfaces/protocolVersion
+  fields of 0.3 were folded into supportedInterfaces[] in 1.0). Optional defaultInputModes and defaultOutputModes
+  are declared; protocolBinding JSONRPC stands in for the 0.3 preferredTransport. The live endpoint corroborates
+  the version claim: it rejects 0.3-shaped requests by name and answers a 1.0 SendMessage.'
+deviations:
+- field: protocolVersion
+  observed: absent at top level; present as supportedInterfaces[0].protocolVersion = "1.0"
+  note: Correct for A2A 1.0.0. A reader applying the 0.3-era top-level check would miss it; recorded so the grade
+    is auditable.
+- field: capabilities.extendedAgentCard
+  observed: false
+  note: Not a 1.0.0 capabilities key; the 1.0 field is top-level supportsAuthenticatedExtendedCard. Harmless extra
+    key, no functional impact.
+- field: securitySchemes
+  observed: absent
+  note: Consistent with the provider's statement that A2A discovery is anonymous; the endpoint answered without
+    credentials.
+- field: capabilities.streaming / pushNotifications
+  observed: false
+  note: Provider states streaming, push notifications, persistent Tasks and extended cards are not supported; only
+    synchronous SendMessage discovery/onboarding responses.

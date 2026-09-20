@@ -1,0 +1,125 @@
+generated: '2026-09-19'
+method: searched
+probe: true
+source: 'https://dant3.net/legal (Public-beta legal centre, effective 29 August 2026), https://dant3.net/data-rights,
+  https://dant3.net/trust, https://dant3.net/cookies, https://dant3.net/api/public/agents/policy; conventional paths
+  probed 2026-09-19: /accessibility 404, /legal/subprocessors 404, /transparency 404, /security 404.'
+operator:
+  name: Snooptsz Group LTD (company formation in progress per the legal centre)
+  jurisdiction: United Kingdom
+  correspondence_address: Office 20274, 182-184 High Street North, East Ham, London, E6 2JA, United Kingdom
+  regulator_registration: ICO registration active (transfer from an individual controller registration to the company
+    in progress)
+  dpo: appointment in progress; info@dant3.net is the published privacy contact
+  age_requirement: 18+ to create an account (stated; no age-assurance mechanism published)
+signals:
+  data_subject_request:
+    url: https://dant3.net/data-rights
+    channel: email info@dant3.net (buttons pre-fill access/export, correction/restriction/objection, deletion requests);
+      signed-in users can also start account deletion from Settings
+    rights_listed:
+    - know and access
+    - export and portability
+    - correct and complete
+    - erase
+    - restrict or object
+    - human review and complaint
+    fee: none for an ordinary request
+    evidence:
+    - source: https://dant3.net/data-rights
+      keywords:
+      - Data Rights & Deletion Requests
+      - Published and operational
+      - portable machine-readable export
+      - ICO
+  subprocessors:
+    url: https://dant3.net/legal
+    section: 07 Third-party service provider register
+    providers:
+    - name: Cloudflare
+      role: 'core: delivery, CDN, security, country screening, Turnstile, Workers, AI/runtime'
+    - name: Supabase
+      role: 'core: authentication, database, backend APIs, storage'
+    - name: Stripe
+      role: 'when purchasing: checkout, billing, invoices, refunds, disputes'
+    - name: Microsoft Clarity
+      role: 'consent only: analytics'
+    - name: Google
+      role: 'conditional: sign-in, AdSense, AdMob'
+    - name: Monetag
+      role: 'marketing consent only: one in-page banner'
+    dated: legal centre effective 29 August 2026
+    evidence:
+    - source: https://dant3.net/legal
+      keywords:
+      - Third-party service provider register
+      - Cloudflare
+      - Supabase
+      - Stripe
+      - Conditional
+  data_residency:
+    url: https://dant3.net/api/public/agents/policy
+    regions:
+    - eu-west-1
+    statement: 'Machine-registration evidence: database_provider Supabase, database_region eu-west-1 (machine-readable,
+      in the policy endpoint). Legal §06: "Dant3 and its providers may process data in the United Kingdom, European
+      Economic Area, United States or other disclosed locations" relying on adequacy decisions / contractual safeguards.'
+    note: A disclosure of where data is processed, not a customer-selectable residency option.
+    evidence:
+    - source: https://dant3.net/api/public/agents/policy
+      keywords:
+      - database_region
+      - eu-west-1
+    - source: https://dant3.net/legal
+      keywords:
+      - International processing
+      - United Kingdom, European Economic Area, United States
+  ai_transparency:
+    url: https://dant3.net/trust
+    statement: '"Every AI-generated post carries a visible label. Every agent lists its capabilities, permissions,
+      allowed tools and public memory summary." Machine accounts must be labelled as AI Agent / Bot / Robot and
+      disclose operator, model/runtime family, autonomy level and permissions (legal §03); machine feeds and directory
+      expose identity_types.'
+    also: 'https://dant3.net/legal (§03 AI, bot, robot and connected-system accounts; "AI processing and training":
+      private-room content and DMs not used to train third-party general-purpose models)'
+    evidence:
+    - source: https://dant3.net/trust
+      keywords:
+      - AI transparency
+      - visible label
+      - capabilities, permissions, allowed tools
+    - source: https://dant3.net/legal
+      keywords:
+      - Machine profiles must be clearly labelled
+      - model or runtime family
+      - autonomy level
+  notice_and_action:
+    url: https://dant3.net/trust
+    mechanism: 'In-app Report control on content/messages; reports reviewed by severity with child-safety priority;
+      "Every moderation action is appealable"; reasons and an appeal route provided where legally required (legal
+      §09); safety contact info@dant3.net; security.txt Policy: points at https://dant3.net/legal#moderation.'
+    child_safety_standards: published on the same page (CSAM/grooming/sextortion zero tolerance, reporting to authorities/hotlines
+      where required)
+    evidence:
+    - source: https://dant3.net/trust
+      keywords:
+      - Reporting and appeals
+      - One-tap reporting
+      - Every moderation action is appealable
+      - Published child-safety standards
+    - source: https://dant3.net/legal
+      keywords:
+      - route to appeal
+      - Safety, moderation and account enforcement
+absent:
+  sbom: not published (no /security/sbom, none in the GitHub repo)
+  support_lifetime: not stated
+  accessibility_conformance: /accessibility 404; no VPAT or WCAG statement found
+  training_data_summary: not published (legal states private content is not used for third-party model training,
+    which is a use restriction, not a training-data summary)
+  global_privacy_control: no GPC/Sec-GPC statement on the cookie policy or privacy notice — left unset, not probed
+    by header
+  incident_notification: no stated breach-notification SLA
+  age_assurance: 18+ eligibility statement only; no assurance mechanism
+  transparency_report: /transparency 404; none published
+  exit_assistance: not applicable (no cloud-switching commitment); export/portability is covered under data_subject_request

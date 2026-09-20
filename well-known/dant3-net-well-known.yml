@@ -1,0 +1,182 @@
+generated: '2026-09-19'
+method: searched
+description: 'Probe of the /.well-known/ discovery surface on every host the record knows. dant3.net is at once
+  the website, the Machine API base (OpenAPI servers[0]), the MCP server host (https://dant3.net/mcp) and the A2A
+  endpoint host, so the host set is the apex plus www. Every 404 below is a real HTTP 404 with an HTML SPA error
+  body, not a soft-200; a negative-control path also 404d on both hosts. Extra rows beyond the closed core list
+  were probed only because robots.txt, llms.txt and the ai-catalog name them explicitly — no glob was used. No OAuth/OIDC
+  discovery document exists: the provider states MCP and A2A discovery are anonymous and the REST surface uses server-issued
+  bearer machine credentials, so the RFC 9728 / RFC 8414 absences are consistent with its stated auth model.'
+path_echo_control: passed
+hit_count: 11
+hosts:
+- host: https://dant3.net
+  role: website + api + mcp + a2a
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    type: text/plain
+    file: dant3-net-security.txt
+  - path: /.well-known/openid-configuration
+    status: 404
+    type: text/html
+    note: SPA 404 page (HTTP 404, HTML body)
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    type: text/html
+    note: SPA 404 page (HTTP 404, HTML body)
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    type: text/html
+    note: SPA 404 page (HTTP 404, HTML body)
+  - path: /.well-known/api-catalog
+    status: 404
+    type: text/html
+    note: SPA 404 page (HTTP 404, HTML body)
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    type: text/html
+    note: SPA 404 page (HTTP 404, HTML body)
+  - path: /.well-known/ucp.json
+    status: 404
+    type: text/html
+    note: SPA 404 page (HTTP 404, HTML body)
+  - path: /.well-known/acp.json
+    status: 404
+    type: text/html
+    note: SPA 404 page (HTTP 404, HTML body)
+  - path: /.well-known/aauth-resource.json
+    status: 404
+    type: text/html
+    note: SPA 404 page (HTTP 404, HTML body)
+  - path: /.well-known/apis.json
+    status: 404
+    type: text/html
+    note: SPA 404 page (HTTP 404, HTML body)
+  - path: /apis.json
+    status: 404
+    type: text/html
+    note: SPA 404 page (HTTP 404, HTML body)
+  - path: /apis.yml
+    status: 404
+    type: text/html
+    note: SPA 404 page (HTTP 404, HTML body)
+  - path: /.well-known/agent-card.json
+    status: 200
+    type: application/json
+    file: dant3-net-agent-card.json
+    note: A2A 1.0 Agent Card; graded in a2a/dant3-net-a2a.yml.
+  - path: /.well-known/agent.json
+    status: 200
+    type: application/json
+    file: dant3-net-agent-card.json
+    note: Legacy A2A path; byte-identical to agent-card.json.
+  - path: /.well-known/mcp.json
+    status: 200
+    type: application/json
+    file: dant3-net-mcp.json
+    note: MCP discovery metadata (transport, tool names, registry name, onboarding endpoints).
+  - path: /.well-known/mcp/server-card.json
+    status: 200
+    type: application/json
+    file: dant3-net-mcp-server-card.json
+    note: MCP server card with full tool inputSchemas; matches the live tools/list.
+  - path: /.well-known/ai-catalog.json
+    status: 200
+    type: application/json
+    file: dant3-net-ai-catalog.json
+    note: ARD / AI Catalog specVersion 1.0 listing the MCP server, A2A agent and Agent Skill; advertised in robots.txt
+      as Agentmap:.
+  - path: /.well-known/dant3.json
+    status: 200
+    type: application/json
+    file: dant3-net-dant3.json
+    note: 'Provider machine manifest: every machine endpoint, scopes, limits, registration modes.'
+  - path: /.well-known/dant3-machine-openapi.json
+    status: 200
+    type: application/json
+    file: ../openapi/_original/dant3-net-machine-api-openapi.json
+    note: OpenAPI 3.1.0 Machine API contract; saved under openapi/, not duplicated here.
+  - path: /.well-known/skills/index.json
+    status: 200
+    type: application/json
+    file: dant3-net-skills-index.json
+    note: Agent Skills index (one installable skill, dant3-network).
+  - path: /.well-known/glama.json
+    status: 200
+    type: application/json
+    file: dant3-net-glama.json
+    note: Glama MCP connector domain verification (maintainer email).
+  - path: /.well-known/dant3-robots.json
+    status: 200
+    type: application/json
+    file: dant3-net-dant3-robots.json
+    note: Robot discovery manifest.
+  - path: /.well-known/dant3-net-negative-control-9f2c1a.json
+    status: 404
+    type: text/html
+    note: 'Negative control: a path that cannot exist returned 404, so the 200s above are real documents, not a
+      path-echoing catch-all.'
+- host: https://www.dant3.net
+  role: www alias
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    type: text/plain
+    file: dant3-net-security.txt
+  - path: /.well-known/openid-configuration
+    status: 404
+    type: text/html
+    note: SPA 404 page (HTTP 404, HTML body)
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    type: text/html
+    note: SPA 404 page (HTTP 404, HTML body)
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    type: text/html
+    note: SPA 404 page (HTTP 404, HTML body)
+  - path: /.well-known/api-catalog
+    status: 404
+    type: text/html
+    note: SPA 404 page (HTTP 404, HTML body)
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    type: text/html
+    note: SPA 404 page (HTTP 404, HTML body)
+  - path: /.well-known/ucp.json
+    status: 404
+    type: text/html
+    note: SPA 404 page (HTTP 404, HTML body)
+  - path: /.well-known/acp.json
+    status: 404
+    type: text/html
+    note: SPA 404 page (HTTP 404, HTML body)
+  - path: /.well-known/aauth-resource.json
+    status: 404
+    type: text/html
+    note: SPA 404 page (HTTP 404, HTML body)
+  - path: /.well-known/apis.json
+    status: 404
+    type: text/html
+    note: SPA 404 page (HTTP 404, HTML body)
+  - path: /apis.json
+    status: 404
+    type: text/html
+    note: SPA 404 page (HTTP 404, HTML body)
+  - path: /apis.yml
+    status: 404
+    type: text/html
+    note: SPA 404 page (HTTP 404, HTML body)
+  - path: /.well-known/agent-card.json
+    status: 200
+    type: application/json
+    file: dant3-net-agent-card.json
+  - path: /.well-known/agent.json
+    status: 200
+    type: application/json
+    file: dant3-net-agent-card.json
+  - path: /.well-known/dant3-net-negative-control-77aa12.json
+    status: 404
+    type: text/html
+    note: Negative control 404.

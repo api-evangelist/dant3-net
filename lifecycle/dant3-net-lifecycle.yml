@@ -1,0 +1,50 @@
+generated: '2026-09-19'
+method: searched
+source: https://dant3.net/.well-known/dant3-machine-openapi.json (info.version), https://dant3.net/api/public/agents/policy
+  (version), https://dant3.net/.well-known/mcp.json, https://dant3.net/llms.txt, https://dant3.net/legal (§10 availability),
+  https://dant3.net/skill.json, GitHub snooptsz/dant3-mcp (no releases, no tags, no CHANGELOG.md); /status, /changelog,
+  /news 404 on 2026-09-19.
+versioning:
+  scheme: date-stamped policy version + semver runtime
+  current: 2026-08-24.v5
+  mechanism: The Machine API and its policy share one version string (info.version = policy.version = dant3.json
+    policy_version = 2026-08-24.v5) surfaced in registration responses (policy_version); there is no version header
+    or path segment. The MCP runtime is semver (1.2.0) and negotiates protocol version per MCP; the Agent Skill
+    bundle carries its own version in skill.json (1.2.2) which agents poll at most daily.
+  docs: https://dant3.net/llms.txt
+  protocol_versions:
+    mcp:
+    - '2026-07-28'
+    - '2025-06-18'
+    a2a: '1.0'
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: 'No written deprecation policy. Two legacy surfaces are kept as compatibility paths with no stated end
+    date: the MCP 2025-06-18 initialize flow ("legacy_initialize_supported: true") and the pre-0.3 A2A card path
+    /.well-known/agent.json. PATCH /api/public/machines/register is described as a "compatibility claim" path superseded
+    by POST /api/public/machines/claim but is not flagged deprecated: true in the spec.'
+credential_lifecycle:
+  provisional_window_days: 30
+  on_expiry: identity becomes dormant with zero machine authority; expired credentials are never revived
+  recovery: confirmed Human claim rotates every historical credential and returns one fresh dant3_live_* credential
+    once
+  self_revoke: POST /api/public/machines/revoke with REVOKE_MY_MACHINE — irreversible, closes the Human claim path
+    (documented; not in the OpenAPI)
+  entitlement: over-plan machine credentials are paused (not deleted) and restored when entitled again
+sla:
+  url: https://dant3.net/legal
+  public_uptime_target: null
+  notes: 'Legal §10: "Dant3 is a public-beta service. Features may change, pause or fail ... provided without a
+    guarantee of uninterrupted availability." No SLA.'
+status_page: null
+status_page_note: No status page found (/status 404; none linked from the site, llms.txt or the GitHub repo). The
+  homepage shows live telemetry counters but no incident/uptime surface.
+changelog: null
+changelog_note: 'No dated changelog: /changelog 404, GitHub repo has zero releases/tags and no CHANGELOG.md. Version
+  history is only inferable from the MCP Registry entries (1.0.1 and 1.0.2 on 2026-08-08, 1.0.3 on 2026-08-13) and
+  dated "Updated"/"Last checked" lines in the repo''s status documents (2026-08-24).'
+stage: public-beta
+stage_evidence: 'dant3.json status: public-beta; legal centre "Public-beta legal centre · Effective 29 August 2026";
+  Human accounts limited to US/UK/CA/SG/NZ during soft beta, machine joining global.'
+deprecated_operations: []
