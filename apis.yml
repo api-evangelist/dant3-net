@@ -27,6 +27,18 @@ tags:
 - MCP
 - A2A
 - Agent Skills
+- Job
+- Human-AI Collaboration
+- Bots
+tags_raw:
+- Company
+- Social Network
+- AI Agents
+- Agent Identity
+- Robotics
+- MCP
+- A2A
+- Agent Skills
 - Jobs
 - Human-AI Collaboration
 - Bots
@@ -40,6 +52,13 @@ apis:
   humanURL: https://dant3.net/developers
   baseURL: https://dant3.net/api/public
   tags:
+  - Machine Identity
+  - AI Agents
+  - Bots
+  - Robots
+  - Social Network
+  - Job
+  tags_raw:
   - Machine Identity
   - AI Agents
   - Bots

@@ -2,23 +2,21 @@
 kin_checks:
   slug: dant3-net
   schema_version: 0.22.0
-  scored_at: '2026-09-19'
-  run_ts: 2026-09-19T193153
+  scored_at: '2026-09-21'
+  run_ts: 2026-09-21T233935
   note: Actionable checks (missed + partial) in `checks`, plus the ids that did not
     apply in `na`. Everything else in rubric/scoring-0.22.0.yml was earned; counts
     below let you verify that.
   counts:
     total: 136
-    earned: 51
-    partial: 6
-    missed: 53
+    earned: 52
+    partial: 7
+    missed: 51
     na: 26
   checks:
   - id: multiple_apis
     status: missed
   - id: well_known_published
-    status: missed
-  - id: llms_txt_published
     status: missed
   - id: apis_json_self_hosted
     status: missed
@@ -31,8 +29,6 @@ kin_checks:
   - id: info_complete
     status: missed
     detail: 0 of 1 openapi documents pass
-  - id: servers_resolvable
-    status: missed
   - id: examples_present
     status: missed
   - id: webhooks_or_callbacks
@@ -132,6 +128,10 @@ kin_checks:
     status: partial
     earned: 1.0
     detail: pointer liveness 0.5
+  - id: agentic_access
+    status: partial
+    earned: 2.5
+    detail: 'authorship: derived'
   - id: mcp_server
     status: partial
     earned: 4.8
