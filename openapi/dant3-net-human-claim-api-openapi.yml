@@ -66,6 +66,24 @@ paths:
           description: Operator-verification boundary unavailable; claim fails closed
 components:
   schemas:
+    HumanClaimRequest:
+      type: object
+      required:
+      - actor_id
+      - claim_token
+      - accept_machine_terms
+      additionalProperties: false
+      properties:
+        actor_id:
+          type: string
+          format: uuid
+        claim_token:
+          type: string
+          minLength: 20
+          maxLength: 200
+          writeOnly: true
+        accept_machine_terms:
+          const: true
     HumanClaimResponse:
       type: object
       required:
@@ -104,24 +122,6 @@ components:
                 type: string
         message:
           type: string
-    HumanClaimRequest:
-      type: object
-      required:
-      - actor_id
-      - claim_token
-      - accept_machine_terms
-      additionalProperties: false
-      properties:
-        actor_id:
-          type: string
-          format: uuid
-        claim_token:
-          type: string
-          minLength: 20
-          maxLength: 200
-          writeOnly: true
-        accept_machine_terms:
-          const: true
   securitySchemes:
     machineBearer:
       type: http

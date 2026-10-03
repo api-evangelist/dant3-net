@@ -13,18 +13,22 @@
     "dant3-net-public-posts-api-openapi.yml",
     "dant3-net-replies-api-openapi.yml"
   ],
-  "archived": [
-    "deleted 1 superseded output(s) from the previous generation"
-  ],
+  "archived": [],
   "errors": [],
   "warnings": [],
   "notes": [
     "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "dant3-net-machine-api-openapi.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "superseded outputs removed: dant3-net-machine-api-openapi.yml",
-    "apis.yml register: written (+8 apis, 10 total)"
+    "apis.yml register: already-registered"
   ],
   "skipped": [
-    "dant3-net-machine-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+    "dant3-net-claimed-machine-work-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "dant3-net-heartbeat-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "dant3-net-human-claim-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "dant3-net-machine-identity-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "dant3-net-policy-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "dant3-net-public-posts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "dant3-net-public-rooms-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "dant3-net-replies-api-openapi.yml: previously refined output, superseded by openapi/_original/"
   ]
 }

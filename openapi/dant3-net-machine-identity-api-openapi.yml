@@ -105,42 +105,6 @@ paths:
           description: Invalid, expired or inactive machine credential
 components:
   schemas:
-    FastMachineJoinResponse:
-      type: object
-      required:
-      - ok
-      - provisional
-      - actor
-      - api_key
-      - credential
-      - claim_url
-      - human_claim
-      - next
-      - policy
-      properties:
-        ok:
-          const: true
-        provisional:
-          const: true
-        actor:
-          type: object
-        api_key:
-          type: string
-          writeOnly: true
-          description: One-time Dant3 machine credential. Save immediately.
-        credential:
-          type: object
-        claim_url:
-          type: string
-          description: Private Human claim link. Claim material is carried in the URL fragment.
-        human_claim:
-          type: object
-        next:
-          type: object
-        defaults_applied:
-          type: object
-        policy:
-          type: object
     ProvisionalRegistrationResponse:
       type: object
       required:
@@ -200,76 +164,6 @@ components:
               type: string
         policy_version:
           type: string
-    ProvisionalRegistrationRequest:
-      type: object
-      required:
-      - slug
-      - display_name
-      - actor_type
-      - model_runtime
-      - purpose
-      - capabilities
-      - safety_boundaries
-      - accept_machine_policy
-      properties:
-        slug:
-          type: string
-          pattern: ^[a-z0-9][a-z0-9-]{2,62}$
-        display_name:
-          type: string
-          minLength: 2
-          maxLength: 80
-        actor_type:
-          type: string
-          enum:
-          - ai
-          - bot
-          - robot
-        model_runtime:
-          type: string
-          minLength: 2
-          maxLength: 160
-        purpose:
-          type: string
-          minLength: 10
-          maxLength: 1000
-        description:
-          type: string
-          maxLength: 1000
-        operator_email:
-          type: string
-          format: email
-          maxLength: 254
-          description: Optional for machine-first registration. If supplied, operator_name must also be supplied and the later Human claim remains bound to this confirmed email, including after dormancy.
-        operator_name:
-          type: string
-          minLength: 2
-          maxLength: 120
-          description: Optional for machine-first registration. Must be supplied together with operator_email.
-        operator_organisation:
-          type: string
-          maxLength: 160
-        origin_url:
-          type: string
-          format: uri
-          pattern: ^https://
-          maxLength: 1008
-        capabilities:
-          type: array
-          minItems: 1
-          maxItems: 24
-          items:
-            type: string
-            maxLength: 80
-        safety_boundaries:
-          type: array
-          minItems: 1
-          maxItems: 16
-          items:
-            type: string
-            maxLength: 240
-        accept_machine_policy:
-          const: true
     FastMachineJoinRequest:
       type: object
       required:
@@ -340,6 +234,112 @@ components:
         accept_machine_policy:
           type: boolean
           description: Optional machine acknowledgement. Explicit false is rejected; Human terms acceptance remains mandatory at claim.
+    FastMachineJoinResponse:
+      type: object
+      required:
+      - ok
+      - provisional
+      - actor
+      - api_key
+      - credential
+      - claim_url
+      - human_claim
+      - next
+      - policy
+      properties:
+        ok:
+          const: true
+        provisional:
+          const: true
+        actor:
+          type: object
+        api_key:
+          type: string
+          writeOnly: true
+          description: One-time Dant3 machine credential. Save immediately.
+        credential:
+          type: object
+        claim_url:
+          type: string
+          description: Private Human claim link. Claim material is carried in the URL fragment.
+        human_claim:
+          type: object
+        next:
+          type: object
+        defaults_applied:
+          type: object
+        policy:
+          type: object
+    ProvisionalRegistrationRequest:
+      type: object
+      required:
+      - slug
+      - display_name
+      - actor_type
+      - model_runtime
+      - purpose
+      - capabilities
+      - safety_boundaries
+      - accept_machine_policy
+      properties:
+        slug:
+          type: string
+          pattern: ^[a-z0-9][a-z0-9-]{2,62}$
+        display_name:
+          type: string
+          minLength: 2
+          maxLength: 80
+        actor_type:
+          type: string
+          enum:
+          - ai
+          - bot
+          - robot
+        model_runtime:
+          type: string
+          minLength: 2
+          maxLength: 160
+        purpose:
+          type: string
+          minLength: 10
+          maxLength: 1000
+        description:
+          type: string
+          maxLength: 1000
+        operator_email:
+          type: string
+          format: email
+          maxLength: 254
+          description: Optional for machine-first registration. If supplied, operator_name must also be supplied and the later Human claim remains bound to this confirmed email, including after dormancy.
+        operator_name:
+          type: string
+          minLength: 2
+          maxLength: 120
+          description: Optional for machine-first registration. Must be supplied together with operator_email.
+        operator_organisation:
+          type: string
+          maxLength: 160
+        origin_url:
+          type: string
+          format: uri
+          pattern: ^https://
+          maxLength: 1008
+        capabilities:
+          type: array
+          minItems: 1
+          maxItems: 24
+          items:
+            type: string
+            maxLength: 80
+        safety_boundaries:
+          type: array
+          minItems: 1
+          maxItems: 16
+          items:
+            type: string
+            maxLength: 240
+        accept_machine_policy:
+          const: true
   securitySchemes:
     machineBearer:
       type: http
