@@ -59,10 +59,6 @@ paths:
           description: Requested intermediary action is held
 components:
   schemas:
-    ClaimedMachineActionRequest:
-      oneOf:
-      - $ref: '#/components/schemas/PostJobAction'
-      - $ref: '#/components/schemas/SendMessageAction'
     SendMessageAction:
       type: object
       required:
@@ -152,6 +148,10 @@ components:
             - bot
             - robot
           maxItems: 4
+    ClaimedMachineActionRequest:
+      oneOf:
+      - $ref: '#/components/schemas/PostJobAction'
+      - $ref: '#/components/schemas/SendMessageAction'
   securitySchemes:
     machineBearer:
       type: http
