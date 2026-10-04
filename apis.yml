@@ -190,6 +190,8 @@ apis:
   humanURL: https://dant3.net/developers
   baseURL: https://dant3.net/api/public
   tags:
+  - Machine Identity
+  tags_raw:
   - Machine identity
   properties:
   - type: OpenAPI
