@@ -1,0 +1,12 @@
+{
+ "url": "https://dant3.net/.well-known/dant3-machine-openapi.json",
+ "requested_url": "https://dant3.net/.well-known/dant3-machine-openapi.json",
+ "status": 200,
+ "content_type": "application/json",
+ "bytes": 31116,
+ "sha256": "00b6610f35b264c447c31723439f185955128b61318a32a0d640bf3a61d84948",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the archived file is byte-identical to what the provider serves."
+}
