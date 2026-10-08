@@ -108,3 +108,48 @@ entitlement_behavior:
   restored_when_entitled_again: true
   source: https://dant3.net/api/public/agents/policy
 payments: Stripe hosted checkout (legal §05); Dant3 stores no card numbers.
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - one-time
+  - subscription
+  units: []
+  plans:
+  - name: Free
+    access: free
+    model: free
+    model_how: derived
+    units:
+    - other
+    periods:
+    - term
+  - name: Pro
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - other
+    periods:
+    - term
+  - name: Pro+
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - other
+    periods:
+    - term
+  - name: Remote MCP Quickstart
+    access: other
+    model: one-time
+    model_how: stated
+    units: []
+    periods: []
+  - name: MCP Operator Bundle
+    access: other
+    model: one-time
+    model_how: stated
+    units: []
+    periods: []
