@@ -1,0 +1,32 @@
+# Front Door AI Index — dant3-net — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: dant3-net
+  lexicon_version: '1.0'
+  probed_at: '2026-09-25'
+  host: dant3.net
+  final_host: dant3.net
+  ownership: own
+  owner: dant3-net
+  shares_host_with: null
+  inherited_from: null
+  alias_of: null
+  verdict: scored
+  score: 15
+  band: 5
+  band_label: prominent
+  host_score: 15
+  density: 54.95
+  words: 273
+  tiers:
+    agentic: 7
+    core: 8
+    model: 0
+  ambiguous: 8
+  top_terms:
+    AI: 8
+    AI agent: 5
+    agent: 5
+    intelligence: 3
+    MCP: 2
