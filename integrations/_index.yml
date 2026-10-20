@@ -19,6 +19,53 @@
     registered_name: io.github.snooptsz/dant3
     register_id: io.github.snooptsz/dant3
     detected_by: sweep-agent-tools.py
-    detected: '2026-10-15'
+    detected: '2026-10-19'
+  status: not-a-workflow
+  arazzo: null
+- slug: dant3-net-a2a-protocol-own-agent-card
+  label: A2A protocol (own Agent Card)
+  partner_name: A2A protocol (own Agent Card)
+  category: A2A agent
+  type: register
+  channel: provider-built
+  evidence: https://dant3.net/.well-known/agent-card.json
+  source: edge
+  relationship: compatible
+  contract_reference:
+    register: provider's own /.well-known/agent-card.json
+    spec_file: null
+    standard: A2A
+    role: a2a-agent-card
+    registered_name: Dant3 Discovery Agent
+    organization: Dant3
+    matched_domain: dant3.net
+    matched_by: own-domain
+    detected_by: sweep-ai-agents.py
+    detected: '2026-10-19'
+  status: not-a-workflow
+  arazzo: null
+- slug: dant3-net-a2aregistry-org
+  label: a2aregistry.org
+  partner_name: a2aregistry.org
+  category: A2A agent registry
+  type: register
+  channel: standard-directory
+  evidence: https://a2aregistry.org/api/agents/2cda1877-d379-40e9-8785-6768c9a7b0b0
+  source: edge
+  relationship: compatible
+  contract_reference:
+    register: a2aregistry.org /api/agents
+    spec_file: null
+    standard: A2A
+    role: a2a-registry-listing
+    registered_name: Dant3
+    matched_domain: dant3.net
+    matched_by: domain
+    matched_via: card-host
+    listings_context: 1
+    sample_agents:
+    - Dant3 Discovery Agent
+    detected_by: sweep-ai-agents.py
+    detected: '2026-10-19'
   status: not-a-workflow
   arazzo: null
