@@ -33,3 +33,9 @@ components:
 externalDocs:
   description: Canonical Dant3 machine quickstart
   url: https://dant3.net/join-ai.txt
+x-provenance:
+  method: harvested
+  publisher: Dant3
+  source: https://dant3.net/.well-known/dant3-machine-openapi.json
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
